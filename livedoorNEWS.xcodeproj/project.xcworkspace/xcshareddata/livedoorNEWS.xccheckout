@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DF7AEFEA-7591-4A95-AF48-A2576C965F96</string>
+	<key>IDESourceControlProjectName</key>
+	<string>livedoorNEWS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B8AD8141DBABC01F25BA86491B6E5585D8B79C86</key>
+		<string>github.com:akaimo/livedoorNEWS-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>livedoorNEWS.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B8AD8141DBABC01F25BA86491B6E5585D8B79C86</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:akaimo/livedoorNEWS-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B8AD8141DBABC01F25BA86491B6E5585D8B79C86</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B8AD8141DBABC01F25BA86491B6E5585D8B79C86</string>
+			<key>IDESourceControlWCCName</key>
+			<string>livedoorNEWS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
