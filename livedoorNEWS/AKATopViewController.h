@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AKATopViewController.h
 //  livedoorNEWS
 //
 //  Created by akaimo on 2015/06/12.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AKATopViewController : UIViewController
 
 @end
-

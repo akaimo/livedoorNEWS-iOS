@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		9914D13B1B2AFE4B00557FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D13A1B2AFE4B00557FDB /* main.m */; };
 		9914D13E1B2AFE4B00557FDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D13D1B2AFE4B00557FDB /* AppDelegate.m */; };
-		9914D1411B2AFE4B00557FDB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1401B2AFE4B00557FDB /* ViewController.m */; };
 		9914D1441B2AFE4B00557FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9914D1421B2AFE4B00557FDB /* Main.storyboard */; };
 		9914D1461B2AFE4B00557FDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9914D1451B2AFE4B00557FDB /* Images.xcassets */; };
 		9914D1491B2AFE4B00557FDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9914D1471B2AFE4B00557FDB /* LaunchScreen.xib */; };
 		9914D1551B2AFE4B00557FDB /* livedoorNEWSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1541B2AFE4B00557FDB /* livedoorNEWSTests.m */; };
+		9914D1631B2AFF2F00557FDB /* AKASynchro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1621B2AFF2F00557FDB /* AKASynchro.m */; };
+		9914D1661B2AFF6400557FDB /* AKATopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1651B2AFF6400557FDB /* AKATopViewController.m */; };
+		9914D1691B2B021200557FDB /* AKACategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1681B2B021200557FDB /* AKACategoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,19 @@
 		9914D13A1B2AFE4B00557FDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9914D13C1B2AFE4B00557FDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9914D13D1B2AFE4B00557FDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9914D13F1B2AFE4B00557FDB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9914D1401B2AFE4B00557FDB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9914D1431B2AFE4B00557FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9914D1451B2AFE4B00557FDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9914D1481B2AFE4B00557FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9914D14E1B2AFE4B00557FDB /* livedoorNEWSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = livedoorNEWSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9914D1531B2AFE4B00557FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9914D1541B2AFE4B00557FDB /* livedoorNEWSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = livedoorNEWSTests.m; sourceTree = "<group>"; };
+		9914D1611B2AFF2F00557FDB /* AKASynchro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKASynchro.h; sourceTree = "<group>"; };
+		9914D1621B2AFF2F00557FDB /* AKASynchro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKASynchro.m; sourceTree = "<group>"; };
+		9914D1641B2AFF6400557FDB /* AKATopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKATopViewController.h; sourceTree = "<group>"; };
+		9914D1651B2AFF6400557FDB /* AKATopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKATopViewController.m; sourceTree = "<group>"; };
+		9914D1671B2B021200557FDB /* AKACategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKACategoryViewController.h; sourceTree = "<group>"; };
+		9914D1681B2B021200557FDB /* AKACategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKACategoryViewController.m; sourceTree = "<group>"; };
+		9914D16A1B2B073200557FDB /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +88,15 @@
 		9914D1371B2AFE4B00557FDB /* livedoorNEWS */ = {
 			isa = PBXGroup;
 			children = (
+				9914D16A1B2B073200557FDB /* Define.h */,
 				9914D13C1B2AFE4B00557FDB /* AppDelegate.h */,
 				9914D13D1B2AFE4B00557FDB /* AppDelegate.m */,
-				9914D13F1B2AFE4B00557FDB /* ViewController.h */,
-				9914D1401B2AFE4B00557FDB /* ViewController.m */,
+				9914D1611B2AFF2F00557FDB /* AKASynchro.h */,
+				9914D1621B2AFF2F00557FDB /* AKASynchro.m */,
+				9914D1641B2AFF6400557FDB /* AKATopViewController.h */,
+				9914D1651B2AFF6400557FDB /* AKATopViewController.m */,
+				9914D1671B2B021200557FDB /* AKACategoryViewController.h */,
+				9914D1681B2B021200557FDB /* AKACategoryViewController.m */,
 				9914D1421B2AFE4B00557FDB /* Main.storyboard */,
 				9914D1451B2AFE4B00557FDB /* Images.xcassets */,
 				9914D1471B2AFE4B00557FDB /* LaunchScreen.xib */,
@@ -163,6 +175,7 @@
 		9914D12D1B2AFE4B00557FDB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AKA;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = akaimo;
 				TargetAttributes = {
@@ -219,8 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9914D1411B2AFE4B00557FDB /* ViewController.m in Sources */,
+				9914D1661B2AFF6400557FDB /* AKATopViewController.m in Sources */,
 				9914D13E1B2AFE4B00557FDB /* AppDelegate.m in Sources */,
+				9914D1691B2B021200557FDB /* AKACategoryViewController.m in Sources */,
+				9914D1631B2AFF2F00557FDB /* AKASynchro.m in Sources */,
 				9914D13B1B2AFE4B00557FDB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +431,7 @@
 				9914D15A1B2AFE4B00557FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9914D15B1B2AFE4B00557FDB /* Build configuration list for PBXNativeTarget "livedoorNEWSTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +440,7 @@
 				9914D15D1B2AFE4B00557FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
