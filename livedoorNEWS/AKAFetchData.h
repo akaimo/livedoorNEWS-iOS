@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AKACoreData.h"
 
 @interface AKAFetchData : NSObject
+
++ (void)fetch;
+
+- (NSArray *)fetchCategory;
+- (NSArray *)fetchArticle:(NSManagedObjectContext *)category;
 
 @end

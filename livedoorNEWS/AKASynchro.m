@@ -9,6 +9,7 @@
 #import "AKASynchro.h"
 #import "Define.h"
 #import "AKACoreData.h"
+#import "AKAFetchData.h"
 
 @interface AKASynchro () <NSXMLParserDelegate> {
     BOOL isItem, isTitle, isLink, isDescription, isDate;
@@ -46,7 +47,8 @@
         [synchro createCategory:categoryName];
     }
     
-    NSArray *categoryArray = [synchro fetchCategory];
+    AKAFetchData *fetchData = [[AKAFetchData alloc] init];
+    NSArray *categoryArray = [fetchData fetchCategory];
     for (int i=0; i<categoryArray.count; i++) {
         synchro.articles = [[NSMutableArray array] mutableCopy];
         NSString *urlStr = [NSString stringWithFormat:categoryURL[i]];
@@ -184,21 +186,9 @@
     }
 }
 
-- (NSArray *)fetchCategory {
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Category"];
-    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
-    return records;
-}
-
-- (NSArray *)fetchArticle:(NSManagedObjectContext *)category {
-    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
-    request.predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
-    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
-    return  records;
-}
-
 - (void)saveArticle:(NSManagedObjectContext *)category {
-    NSArray *articleArray = [self fetchArticle:category];
+    AKAFetchData *fetchData = [[AKAFetchData alloc] init];
+    NSArray *articleArray = [fetchData fetchArticle:category];
     
     // DBに存在しなければ保存
     for (NSDictionary *dic in _articles) {
@@ -219,6 +209,7 @@
             [obj setValue:[dic valueForKey:@"date"] forKey:@"date"];
             [obj setValue:category forKey:@"category"];
             [[AKACoreData sharedCoreData] saveContext];
+            NSLog(@"%@", [dic valueForKey:@"title"]);
         }
     }
 }

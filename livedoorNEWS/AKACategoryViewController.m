@@ -8,6 +8,7 @@
 
 #import "AKACategoryViewController.h"
 #import "AKASynchro.h"
+#import "AppDelegate.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -21,7 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"%@", _articles);
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    _articles = [NSArray arrayWithArray:delegate.article[_categoryNumber]];
 }
 
 - (void)didReceiveMemoryWarning {

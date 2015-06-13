@@ -18,6 +18,7 @@
 		9914D1691B2B021200557FDB /* AKACategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1681B2B021200557FDB /* AKACategoryViewController.m */; };
 		9914D16E1B2B3F2B00557FDB /* AKACoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D16D1B2B3F2B00557FDB /* AKACoreData.m */; };
 		9914D1711B2B3FF200557FDB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9914D16F1B2B3FF200557FDB /* Model.xcdatamodeld */; };
+		9914D1741B2BE27F00557FDB /* AKAFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9914D1731B2BE27F00557FDB /* AKAFetchData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		9914D16C1B2B3F2B00557FDB /* AKACoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKACoreData.h; sourceTree = "<group>"; };
 		9914D16D1B2B3F2B00557FDB /* AKACoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKACoreData.m; sourceTree = "<group>"; };
 		9914D1701B2B3FF200557FDB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9914D1721B2BE27F00557FDB /* AKAFetchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAFetchData.h; sourceTree = "<group>"; };
+		9914D1731B2BE27F00557FDB /* AKAFetchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKAFetchData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +99,7 @@
 				9914D16A1B2B073200557FDB /* Define.h */,
 				9914D13C1B2AFE4B00557FDB /* AppDelegate.h */,
 				9914D13D1B2AFE4B00557FDB /* AppDelegate.m */,
-				9914D1611B2AFF2F00557FDB /* AKASynchro.h */,
-				9914D1621B2AFF2F00557FDB /* AKASynchro.m */,
-				9914D16C1B2B3F2B00557FDB /* AKACoreData.h */,
-				9914D16D1B2B3F2B00557FDB /* AKACoreData.m */,
+				9914D1751B2BE48400557FDB /* CoreData */,
 				9914D16B1B2B3F0F00557FDB /* View */,
 				9914D1421B2AFE4B00557FDB /* Main.storyboard */,
 				9914D1451B2AFE4B00557FDB /* Images.xcassets */,
@@ -145,6 +145,19 @@
 				9914D1681B2B021200557FDB /* AKACategoryViewController.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		9914D1751B2BE48400557FDB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9914D16C1B2B3F2B00557FDB /* AKACoreData.h */,
+				9914D16D1B2B3F2B00557FDB /* AKACoreData.m */,
+				9914D1611B2AFF2F00557FDB /* AKASynchro.h */,
+				9914D1621B2AFF2F00557FDB /* AKASynchro.m */,
+				9914D1721B2BE27F00557FDB /* AKAFetchData.h */,
+				9914D1731B2BE27F00557FDB /* AKAFetchData.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +263,7 @@
 			files = (
 				9914D1661B2AFF6400557FDB /* AKATopViewController.m in Sources */,
 				9914D13E1B2AFE4B00557FDB /* AppDelegate.m in Sources */,
+				9914D1741B2BE27F00557FDB /* AKAFetchData.m in Sources */,
 				9914D1691B2B021200557FDB /* AKACategoryViewController.m in Sources */,
 				9914D1711B2B3FF200557FDB /* Model.xcdatamodeld in Sources */,
 				9914D1631B2AFF2F00557FDB /* AKASynchro.m in Sources */,
