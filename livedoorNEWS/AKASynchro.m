@@ -194,7 +194,7 @@
     for (NSDictionary *dic in _articles) {
         BOOL exist = NO;
         for (NSManagedObjectContext *article in articleArray) {
-            if ([[article valueForKey:@"title"] isEqualToString:[dic valueForKey:@"title"]]) {
+            if ([[article valueForKey:@"link"] isEqualToString:[dic valueForKey:@"link"]]) {
                 exist = YES;
                 break;
             }

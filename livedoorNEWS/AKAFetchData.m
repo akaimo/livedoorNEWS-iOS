@@ -29,7 +29,7 @@
                 break;
             }
         }
-        NSArray *articleArray = [fetchData fetchArticle:category];
+        NSArray *articleArray = [fetchData fetchArticleSort:category];
         [delegate.article addObject:articleArray];
     }
 }
@@ -44,6 +44,15 @@
 - (NSArray *)fetchArticle:(NSManagedObjectContext *)category {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
     request.predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
+- (NSArray *)fetchArticleSort:(NSManagedObjectContext *)category {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
     NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
     return  records;
 }
