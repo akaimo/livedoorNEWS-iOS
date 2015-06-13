@@ -8,6 +8,7 @@
 
 #import "AKASynchro.h"
 #import "Define.h"
+#import "AKACoreData.h"
 
 @interface AKASynchro () <NSXMLParserDelegate> {
     BOOL isItem, isTitle, isLink, isDescription, isDate;
@@ -20,26 +21,56 @@
 
 @implementation AKASynchro
 
-+ (NSArray *)synchro {
-    // TODO: URLからXMLを受け取り解析
-    AKASynchro *synchro = [[AKASynchro alloc] init];
-    synchro.articles = [[NSMutableArray array] mutableCopy];
-    NSString *urlStr = [NSString stringWithFormat:@"http://news.livedoor.com/topics/rss/top.xml"];
-    NSURL *url = [NSURL URLWithString:urlStr];
++ (void)synchro {
+    // sqlite3のURLを収得
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = paths[0];
+    NSLog(@"sqlite3: %@", documentsPath);
     
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    parser.delegate = synchro;
-    BOOL isSuccess = [parser parse];
-    if (!isSuccess) {
-        NSLog(@"Errer");
-        return nil;
+    AKASynchro *synchro = [[AKASynchro alloc] init];
+    NSArray *categoryName = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
+    NSArray *categoryURL = @[@"http://news.livedoor.com/topics/rss/top.xml",
+                             @"http://news.livedoor.com/topics/rss/dom.xml",
+                             @"http://news.livedoor.com/topics/rss/int.xml",
+                             @"http://news.livedoor.com/topics/rss/eco.xml",
+                             @"http://news.livedoor.com/topics/rss/ent.xml",
+                             @"http://news.livedoor.com/topics/rss/spo.xml",
+                             @"http://news.livedoor.com/rss/summary/52.xml",
+                             @"http://news.livedoor.com/topics/rss/gourmet.xml",
+                             @"http://news.livedoor.com/topics/rss/love.xml",
+                             @"http://news.livedoor.com/topics/rss/trend.xml"];
+    
+    if (![synchro existCategory]) {
+        // Categoryテーブルを作成する
+        NSLog(@"unexist");
+        [synchro createCategory:categoryName];
     }
     
-    
-    
-    // TODO: 解析したデータをDBに保存
-    
-    return synchro.articles;
+    NSArray *categoryArray = [synchro fetchCategory];
+    for (int i=0; i<categoryArray.count; i++) {
+        synchro.articles = [[NSMutableArray array] mutableCopy];
+        NSString *urlStr = [NSString stringWithFormat:categoryURL[i]];
+        NSURL *url = [NSURL URLWithString:urlStr];
+        
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+        parser.delegate = synchro;
+        BOOL isSuccess = [parser parse];
+        if (!isSuccess) {
+            NSLog(@"Errer");
+            return;
+        }
+        
+        // カテゴリーを抽出
+        NSManagedObjectContext *category;
+        for (int j=0; j<categoryArray.count; j++) {
+            if ([[categoryArray valueForKey:@"name"][j] isEqualToString:categoryName[i]]) {
+                category = categoryArray[j];
+                break;
+            }
+        }
+        
+        [synchro saveArticle:category];
+    }
 }
 
 
@@ -102,7 +133,7 @@
 
 //-- タグ以外のテキストを読み込んだ時
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-        NSLog(@"%@", string);
+//        NSLog(@"%@", string);
     if (isTitle) {
         [title appendString:string];
     } else if (isLink) {
@@ -124,13 +155,72 @@
     NSLog(@"error");
 }
 
-//-- Dateをフォーマット
+
+# pragma mark - Synchro
 - (NSDate *)formatDate:(NSString *)dateStr {
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     formatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
     NSDate *date = [formatter dateFromString:dateStr];
     return date;
+}
+
+- (BOOL)existCategory {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Category"];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    if (records.count == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)createCategory:(NSArray *)categoryName {
+    for (NSString *name in categoryName) {
+        id obj = [NSEntityDescription insertNewObjectForEntityForName:@"Category"
+                                               inManagedObjectContext:[AKACoreData sharedCoreData].managedObjectContext];
+        [obj setValue:name forKey:@"name"];
+        [[AKACoreData sharedCoreData] saveContext];
+    }
+}
+
+- (NSArray *)fetchCategory {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Category"];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return records;
+}
+
+- (NSArray *)fetchArticle:(NSManagedObjectContext *)category {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
+- (void)saveArticle:(NSManagedObjectContext *)category {
+    NSArray *articleArray = [self fetchArticle:category];
+    
+    // DBに存在しなければ保存
+    for (NSDictionary *dic in _articles) {
+        BOOL exist = NO;
+        for (NSManagedObjectContext *article in articleArray) {
+            if ([[article valueForKey:@"title"] isEqualToString:[dic valueForKey:@"title"]]) {
+                exist = YES;
+                break;
+            }
+        }
+        
+        if (!exist) {
+            id obj = [NSEntityDescription insertNewObjectForEntityForName:@"Article"
+                                                   inManagedObjectContext:[AKACoreData sharedCoreData].managedObjectContext];
+            [obj setValue:[dic valueForKey:@"title"] forKey:@"title"];
+            [obj setValue:[dic valueForKey:@"link"] forKey:@"link"];
+            [obj setValue:[dic valueForKey:@"description"] forKey:@"detail"];
+            [obj setValue:[dic valueForKey:@"date"] forKey:@"date"];
+            [obj setValue:category forKey:@"category"];
+            [[AKACoreData sharedCoreData] saveContext];
+        }
+    }
 }
 
 

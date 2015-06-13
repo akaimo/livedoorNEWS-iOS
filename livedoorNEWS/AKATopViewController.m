@@ -28,6 +28,7 @@
     self.navigationItem.backBarButtonItem = barButton;
     
     self.title = @"livedoor NEWS";
+    [AKASynchro synchro];
     _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
 }
 

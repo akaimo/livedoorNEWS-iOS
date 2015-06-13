@@ -10,6 +10,6 @@
 
 @interface AKASynchro : NSObject
 
-+ (NSArray *)synchro;
++ (void)synchro;
 
 @end
