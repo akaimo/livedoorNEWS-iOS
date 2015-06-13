@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    /* 次のViewの戻るボタンの設定 */
+    // 次のViewの戻るボタンの設定
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"";
     self.navigationItem.backBarButtonItem = barButton;
@@ -67,7 +67,8 @@
     if ([[segue identifier] isEqualToString:@"Detail"]) {
         AKADetailViewController *detailViewController = (AKADetailViewController *)[segue destinationViewController];
         NSIndexPath *indexPath = sender;
-        detailViewController.article = _articles[indexPath.row];
+        detailViewController.article = _articles;
+        detailViewController.articleNumber = (int)indexPath.row;
     }
 }
 

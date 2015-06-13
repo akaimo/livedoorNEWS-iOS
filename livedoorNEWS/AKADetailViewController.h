@@ -10,6 +10,7 @@
 
 @interface AKADetailViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *article;
+@property (strong, nonatomic) NSArray *article;
+@property int articleNumber;
 
 @end
