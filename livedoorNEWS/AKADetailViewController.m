@@ -43,11 +43,21 @@
                                        documentAttributes:nil error:&err];
     if(err) NSLog(@"Unable to parse label text: %@", err);
     self.detailLabel.font = [UIFont fontWithName:@"System" size:15];
+    self.detailLabel.userInteractionEnabled = YES;
+    self.detailLabel.tag = 101;
     
     _relationNumber = [NSMutableArray arrayWithArray:[self getRelationNumber]];
     self.relation1Label.text = [_article valueForKey:@"title"][[_relationNumber[0] intValue]];
+    self.relation1Label.userInteractionEnabled = YES;
+    self.relation1Label.tag = 200;
+    
     self.relation2Label.text = [_article valueForKey:@"title"][[_relationNumber[1] intValue]];
+    self.relation2Label.userInteractionEnabled = YES;
+    self.relation2Label.tag = 201;
+    
     self.relation3Label.text = [_article valueForKey:@"title"][[_relationNumber[2] intValue]];
+    self.relation3Label.userInteractionEnabled = YES;
+    self.relation3Label.tag = 202;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,12 +68,31 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
+    AKARssWebViewController *vc =  [self.storyboard instantiateViewControllerWithIdentifier:@"RssWebViewController"];
     switch (touch.view.tag) {
-        case 100: {
-            AKARssWebViewController *vc =  [self.storyboard instantiateViewControllerWithIdentifier:@"RssWebViewController"];
+        case 100:
             vc.url = [_article valueForKey:@"link"][_articleNumber];
             [self.navigationController pushViewController:vc animated:YES];
-        }
+            break;
+            
+        case 101:
+            vc.url = [_article valueForKey:@"link"][_articleNumber];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+            
+        case 200:
+            vc.url = [_article valueForKey:@"link"][[_relationNumber[0] intValue]];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+            
+        case 201:
+            vc.url = [_article valueForKey:@"link"][[_relationNumber[1] intValue]];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+            
+        case 202:
+            vc.url = [_article valueForKey:@"link"][[_relationNumber[2] intValue]];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
             
         default:
