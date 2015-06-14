@@ -9,6 +9,7 @@
 #import "AKATopViewController.h"
 #import "AKACategoryViewController.h"
 #import "AKASynchro.h"
+#import "AKAFetchData.h"
 
 @interface AKATopViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -30,6 +31,7 @@
     self.title = @"livedoor NEWS";
     [AKASynchro synchro];
     _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
+    [AKAFetchData fetch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +62,15 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"Category" sender:_articles[indexPath.row]];
+    [self performSegueWithIdentifier:@"Category" sender:indexPath];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"Category"]) {
         AKACategoryViewController *categoryViewController = (AKACategoryViewController *)[segue destinationViewController];
-        categoryViewController.title = sender;
+        NSIndexPath *indexPath = sender;
+        categoryViewController.title = _articles[indexPath.row];
+        categoryViewController.categoryNumber = (int)indexPath.row;
     }
 }
 

@@ -10,4 +10,6 @@
 
 @interface AKACategoryViewController : UIViewController
 
+@property int categoryNumber;
+
 @end

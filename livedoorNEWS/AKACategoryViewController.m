@@ -8,6 +8,8 @@
 
 #import "AKACategoryViewController.h"
 #import "AKASynchro.h"
+#import "AppDelegate.h"
+#import "AKADetailViewController.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -21,7 +23,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"%@", _articles);
+    // 次のViewの戻るボタンの設定
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationItem.backBarButtonItem = barButton;
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    _articles = [NSArray arrayWithArray:delegate.article[_categoryNumber]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,9 +60,16 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"Detail" sender:indexPath];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"Detail"]) {
+        AKADetailViewController *detailViewController = (AKADetailViewController *)[segue destinationViewController];
+        NSIndexPath *indexPath = sender;
+        detailViewController.article = _articles;
+        detailViewController.articleNumber = (int)indexPath.row;
+    }
 }
 
 @end
