@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *relation1Label;
 @property (weak, nonatomic) IBOutlet UILabel *relation2Label;
 @property (weak, nonatomic) IBOutlet UILabel *relation3Label;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) NSMutableArray *relationNumber;
 
@@ -34,6 +35,11 @@
     self.titleLabel.text = [_article valueForKey:@"title"][_articleNumber];
     self.titleLabel.userInteractionEnabled = YES;
     self.titleLabel.tag = 100;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
+    [df setDateFormat:@"yyyy/MM/dd HH:mm"];
+    self.dateLabel.text = [df stringFromDate:[_article valueForKey:@"date"][_articleNumber]];
     
     NSError *err = nil;
     self.detailLabel.attributedText = [[NSAttributedString alloc]

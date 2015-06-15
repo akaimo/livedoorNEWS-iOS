@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *articles;
 @property (weak, nonatomic) IBOutlet UITableView *topTableView;
+- (IBAction)tapRefresh:(id)sender;
 
 @end
 
@@ -32,6 +33,10 @@
     [AKASynchro synchro];
     _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     [AKAFetchData fetch];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.topTableView addSubview:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,4 +80,18 @@
 }
 
 
+- (void)onRefresh:(UIRefreshControl *) refreshControl {
+    [refreshControl beginRefreshing];
+    
+    [AKASynchro synchro];
+    [AKAFetchData fetch];
+    
+    [refreshControl endRefreshing];
+}
+
+
+- (IBAction)tapRefresh:(id)sender {
+    [AKASynchro synchro];
+    [AKAFetchData fetch];
+}
 @end

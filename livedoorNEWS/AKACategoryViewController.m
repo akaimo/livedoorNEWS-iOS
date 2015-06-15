@@ -10,6 +10,7 @@
 #import "AKASynchro.h"
 #import "AppDelegate.h"
 #import "AKADetailViewController.h"
+#import "AKATableViewCell.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -28,6 +29,9 @@
     barButton.title = @"";
     self.navigationItem.backBarButtonItem = barButton;
     
+    UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
+    [self.categoryTableView registerNib:nib forCellReuseIdentifier:@"Detail"];
+    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     _articles = [NSArray arrayWithArray:delegate.article[_categoryNumber]];
 }
@@ -45,16 +49,34 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"ArticleCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = @"Detail";
+    AKATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.titleLabel.text = [_articles valueForKey:@"title"][indexPath.row];
     
-    if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    cell.textLabel.text = [_articles valueForKey:@"title"][indexPath.row];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
+    [df setDateFormat:@"yyyy/MM/dd HH:mm"];
+    cell.dateLabel.text = [df stringFromDate:[_articles valueForKey:@"date"][indexPath.row]];
+    
+    [cell.titleLabel sizeToFit];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height;
+    CGFloat dateHeight = 15.0;
+    CGFloat pad = 10.0 + 10.0;
+    
+    // titleの高さを取得
+    CGFloat viewMargin = 20.0f;
+    CGFloat viewWidth = _categoryTableView.frame.size.width - (viewMargin * 2);
+    CGSize bounds = CGSizeMake(viewWidth, CGFLOAT_MAX);
+    CGRect boundingRectTitle = [[_articles valueForKey:@"title"][indexPath.row] boundingRectWithSize:bounds options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:17.0] forKey:NSFontAttributeName] context:nil];
+    
+    height = boundingRectTitle.size.height + dateHeight + pad;
+    
+    return height;
 }
 
 
