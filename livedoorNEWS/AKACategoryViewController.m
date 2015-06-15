@@ -12,6 +12,7 @@
 #import "AKADetailViewController.h"
 #import "AKATableViewCell.h"
 #import "AKAFetchData.h"
+#import "AKAMarkAsArticle.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -72,13 +73,20 @@
     NSString *cellIdentifier = @"Detail";
     AKATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.titleLabel.text = [_articles valueForKey:@"title"][indexPath.row];
+    cell.titleLabel.textColor = [UIColor blackColor];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
     [df setDateFormat:@"yyyy/MM/dd HH:mm"];
     cell.dateLabel.text = [df stringFromDate:[_articles valueForKey:@"date"][indexPath.row]];
+    cell.dateLabel.textColor = [UIColor darkGrayColor];
     
     [cell.titleLabel sizeToFit];
+    
+    if ([[_articles valueForKey:@"unread"][indexPath.row] isEqualToNumber:[NSNumber numberWithBool:NO]]) {
+        cell.titleLabel.textColor = [UIColor lightGrayColor];
+        cell.dateLabel.textColor = [UIColor lightGrayColor];
+    }
     
     return cell;
 }
@@ -102,6 +110,14 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 開いたときに既読にする
+    if ([[_articles valueForKey:@"unread"][indexPath.row] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        // TODO: 要高速化
+        AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+        [mark changeUnread:[_articles valueForKey:@"link"][indexPath.row] unread:[NSNumber numberWithBool:NO]];
+        [_articles[indexPath.row] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
+        [_categoryTableView reloadData];
+    }
     [self performSegueWithIdentifier:@"Detail" sender:indexPath];
 }
 

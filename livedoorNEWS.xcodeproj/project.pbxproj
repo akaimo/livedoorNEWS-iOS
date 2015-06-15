@@ -23,6 +23,7 @@
 		99333D311B2C38AB0058A96B /* AKADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333D301B2C38AB0058A96B /* AKADetailViewController.m */; };
 		99333D351B2DAE1C0058A96B /* AKATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333D331B2DAE1C0058A96B /* AKATableViewCell.m */; };
 		99333D361B2DAE1C0058A96B /* AKATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99333D341B2DAE1C0058A96B /* AKATableViewCell.xib */; };
+		99333D3A1B2E98120058A96B /* AKAMarkAsArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 99333D391B2E98120058A96B /* AKAMarkAsArticle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		99333D321B2DAE1C0058A96B /* AKATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKATableViewCell.h; sourceTree = "<group>"; };
 		99333D331B2DAE1C0058A96B /* AKATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKATableViewCell.m; sourceTree = "<group>"; };
 		99333D341B2DAE1C0058A96B /* AKATableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AKATableViewCell.xib; sourceTree = "<group>"; };
+		99333D381B2E98120058A96B /* AKAMarkAsArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKAMarkAsArticle.h; sourceTree = "<group>"; };
+		99333D391B2E98120058A96B /* AKAMarkAsArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKAMarkAsArticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				9914D16A1B2B073200557FDB /* Define.h */,
 				9914D13C1B2AFE4B00557FDB /* AppDelegate.h */,
 				9914D13D1B2AFE4B00557FDB /* AppDelegate.m */,
+				99333D381B2E98120058A96B /* AKAMarkAsArticle.h */,
+				99333D391B2E98120058A96B /* AKAMarkAsArticle.m */,
 				9914D1751B2BE48400557FDB /* CoreData */,
 				9914D16B1B2B3F0F00557FDB /* View */,
 				9914D1421B2AFE4B00557FDB /* Main.storyboard */,
@@ -297,6 +302,7 @@
 				9914D1711B2B3FF200557FDB /* Model.xcdatamodeld in Sources */,
 				9914D1631B2AFF2F00557FDB /* AKASynchro.m in Sources */,
 				99333D311B2C38AB0058A96B /* AKADetailViewController.m in Sources */,
+				99333D3A1B2E98120058A96B /* AKAMarkAsArticle.m in Sources */,
 				9914D16E1B2B3F2B00557FDB /* AKACoreData.m in Sources */,
 				9914D13B1B2AFE4B00557FDB /* main.m in Sources */,
 			);

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *relation2Label;
 @property (weak, nonatomic) IBOutlet UILabel *relation3Label;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+- (IBAction)tapActionBtn:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *relationNumber;
 
@@ -118,4 +119,33 @@
     return  array;
 }
 
+- (IBAction)tapActionBtn:(id)sender {
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:nil
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                              // ボタンタップ時の処理
+                                                          }];
+    
+    UIAlertAction * unreadAction = [UIAlertAction actionWithTitle:@"Unread"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              // ボタンタップ時の処理
+                                                          }];
+    
+    UIAlertAction * saveAction = [UIAlertAction actionWithTitle:@"Save"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            // ボタンタップ時の処理
+                                                        }];
+    
+    [ac addAction:cancelAction];
+    [ac addAction:unreadAction];
+    [ac addAction:saveAction];
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
 @end
