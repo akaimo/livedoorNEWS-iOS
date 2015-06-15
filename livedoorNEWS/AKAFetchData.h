@@ -15,5 +15,7 @@
 
 - (NSArray *)fetchCategory;
 - (NSArray *)fetchArticle:(NSManagedObjectContext *)category;
+- (NSArray *)fetchArticle;
+- (NSArray *)fetchSaveArticle;
 
 @end

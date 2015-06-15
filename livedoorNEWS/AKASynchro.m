@@ -73,6 +73,8 @@
         
         [synchro saveArticle:category];
     }
+    
+    [synchro deleteArticle];
 }
 
 
@@ -211,6 +213,29 @@
             [[AKACoreData sharedCoreData] saveContext];
             NSLog(@"%@", [dic valueForKey:@"title"]);
         }
+    }
+}
+
+- (void)deleteArticle {
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc]init];
+    comps.day = -4;
+    NSDate *result = [calendar dateByAddingComponents:comps toDate:now options:0];
+    
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"save == %@ && date <= %@",[NSNumber numberWithBool:NO], result];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    
+    if (records.count != 0) {
+        for (NSManagedObject *data in records) {
+            NSLog(@"%@ %@", [data valueForKey:@"date"], [data valueForKey:@"title"]);
+            [[[AKACoreData sharedCoreData] managedObjectContext] deleteObject:data];
+        }
+        [[AKACoreData sharedCoreData] saveContext];
+        NSLog(@"削除");
+    } else {
+        NSLog(@"削除なし");
     }
 }
 

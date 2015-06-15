@@ -102,7 +102,13 @@
                             <constraint firstAttribute="trailing" secondItem="Xbt-KX-bza" secondAttribute="trailing" id="sXd-zZ-YaV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Fx3-R8-2yA"/>
+                    <navigationItem key="navigationItem" id="Fx3-R8-2yA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="X3N-62-qhI">
+                            <connections>
+                                <action selector="tapActionBtn:" destination="QGf-at-rcO" id="Rfp-Ot-ylm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTableView" destination="Xbt-KX-bza" id="lhb-Ya-W4D"/>
                     </connections>
@@ -189,7 +195,13 @@
                             <constraint firstItem="kDS-0u-lpe" firstAttribute="leading" secondItem="30m-5r-iwO" secondAttribute="leadingMargin" constant="10" id="ndg-sZ-fWJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SXI-kf-jpZ"/>
+                    <navigationItem key="navigationItem" id="SXI-kf-jpZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="vhV-aa-ota">
+                            <connections>
+                                <action selector="tapActionBtn:" destination="DRd-Pf-89z" id="NL6-k3-nfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="A3V-a9-U6x" id="70v-Xt-lGr"/>
                         <outlet property="detailLabel" destination="Ryn-If-5by" id="nyV-Sv-Kak"/>

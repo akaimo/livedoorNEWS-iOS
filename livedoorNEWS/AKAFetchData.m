@@ -29,7 +29,7 @@
                 break;
             }
         }
-        NSArray *articleArray = [fetchData fetchArticleSort:category];
+        NSArray *articleArray = [fetchData fetchUnreadArticleSort:category];
         [delegate.article addObject:articleArray];
     }
 }
@@ -51,6 +51,32 @@
 - (NSArray *)fetchArticleSort:(NSManagedObjectContext *)category {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
     request.predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
+- (NSArray *)fetchUnreadArticleSort:(NSManagedObjectContext *)category {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"category == %@ && unread == %@", category, [NSNumber numberWithBool:YES]];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
+- (NSArray *)fetchArticle {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
+- (NSArray *)fetchSaveArticle {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"save == %@", [NSNumber numberWithBool:YES]];
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     request.sortDescriptors = @[sortDescriptor];
     NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];

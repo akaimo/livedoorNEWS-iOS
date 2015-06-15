@@ -8,6 +8,7 @@
 
 #import "AKADetailViewController.h"
 #import "AKARssWebViewController.h"
+#import "AKAMarkAsArticle.h"
 
 @interface AKADetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *relation2Label;
 @property (weak, nonatomic) IBOutlet UILabel *relation3Label;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+- (IBAction)tapActionBtn:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *relationNumber;
 
@@ -36,10 +38,7 @@
     self.titleLabel.userInteractionEnabled = YES;
     self.titleLabel.tag = 100;
     
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
-    [df setDateFormat:@"yyyy/MM/dd HH:mm"];
-    self.dateLabel.text = [df stringFromDate:[_article valueForKey:@"date"][_articleNumber]];
+    [self setDateLabel];
     
     NSError *err = nil;
     self.detailLabel.attributedText = [[NSAttributedString alloc]
@@ -118,4 +117,91 @@
     return  array;
 }
 
+- (void)setDateLabel {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
+    [df setDateFormat:@"yyyy/MM/dd HH:mm"];
+    if ([[_article valueForKey:@"save"][_articleNumber] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        self.dateLabel.text = [NSString stringWithFormat:@"★ %@", [df stringFromDate:[_article valueForKey:@"date"][_articleNumber]]];
+    } else {
+        self.dateLabel.text = [df stringFromDate:[_article valueForKey:@"date"][_articleNumber]];
+    }
+}
+
+- (IBAction)tapActionBtn:(id)sender {
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:@"Change articles of state?"
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                          }];
+    
+    UIAlertAction * readAction = [UIAlertAction actionWithTitle:@"Read"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              // 既読にする
+                                                              AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+                                                              [mark changeUnread:[_article valueForKey:@"link"][_articleNumber]
+                                                                          unread:[NSNumber numberWithBool:NO]];
+                                                              
+                                                              [_article[_articleNumber] setValue:[NSNumber numberWithDouble:NO]
+                                                                                          forKey:@"unread"];
+                                                          }];
+    
+    UIAlertAction * unreadAction = [UIAlertAction actionWithTitle:@"Unread"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              // 未読にする
+                                                              AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+                                                              [mark changeUnread:[_article valueForKey:@"link"][_articleNumber]
+                                                                          unread:[NSNumber numberWithBool:YES]];
+                                                              
+                                                              [_article[_articleNumber] setValue:[NSNumber numberWithDouble:YES]
+                                                                                          forKey:@"unread"];
+                                                          }];
+    
+    UIAlertAction * saveAction = [UIAlertAction actionWithTitle:@"Save"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            // お気に入りにする
+                                                            AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+                                                            [mark changeSave:[_article valueForKey:@"link"][_articleNumber]
+                                                                        save:[NSNumber numberWithBool:YES]];
+                                                            
+                                                            [_article[_articleNumber] setValue:[NSNumber numberWithDouble:YES]
+                                                                                        forKey:@"save"];
+                                                            [self setDateLabel];
+                                                        }];
+    
+    UIAlertAction * unsaveAction = [UIAlertAction actionWithTitle:@"Unsave"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            // お気に入りを解除する
+                                                            AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+                                                            [mark changeSave:[_article valueForKey:@"link"][_articleNumber]
+                                                                        save:[NSNumber numberWithBool:NO]];
+                                                            
+                                                            [_article[_articleNumber] setValue:[NSNumber numberWithDouble:NO]
+                                                                                        forKey:@"save"];
+                                                            [self setDateLabel];
+                                                        }];
+    
+    [ac addAction:cancelAction];
+    
+    if ([[_article valueForKey:@"unread"][_articleNumber] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [ac addAction:readAction];
+    } else {
+        [ac addAction:unreadAction];
+    }
+    
+    if ([[_article valueForKey:@"save"][_articleNumber] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [ac addAction:unsaveAction];
+    } else {
+        [ac addAction:saveAction];
+    }
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
 @end
