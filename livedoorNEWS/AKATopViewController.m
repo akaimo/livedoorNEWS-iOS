@@ -10,6 +10,7 @@
 #import "AKACategoryViewController.h"
 #import "AKASynchro.h"
 #import "AKAFetchData.h"
+#import "Define.h"
 
 @interface AKATopViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -48,7 +49,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _articles.count;
+    return _articles.count + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,7 +60,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = _articles[indexPath.row];
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = ALL;
+            break;
+            
+        case 1:
+            cell.textLabel.text = SAVE;
+            break;
+            
+        default:
+            cell.textLabel.text = _articles[indexPath.row - 2];
+            break;
+    }
     
     return cell;
 }
@@ -74,7 +88,20 @@
     if ([[segue identifier] isEqualToString:@"Category"]) {
         AKACategoryViewController *categoryViewController = (AKACategoryViewController *)[segue destinationViewController];
         NSIndexPath *indexPath = sender;
-        categoryViewController.title = _articles[indexPath.row];
+        
+        switch (indexPath.row) {
+            case 0:
+                categoryViewController.title = ALL;
+                break;
+                
+            case 1:
+                categoryViewController.title = SAVE;
+                break;
+                
+            default:
+                categoryViewController.title = _articles[indexPath.row - 2];
+                break;
+        }
         categoryViewController.categoryNumber = (int)indexPath.row;
     }
 }

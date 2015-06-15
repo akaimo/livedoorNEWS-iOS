@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "AKADetailViewController.h"
 #import "AKATableViewCell.h"
+#import "AKAFetchData.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -32,8 +33,27 @@
     UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
     [self.categoryTableView registerNib:nib forCellReuseIdentifier:@"Detail"];
     
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    _articles = [NSArray arrayWithArray:delegate.article[_categoryNumber]];
+    switch (_categoryNumber) {
+        case 0:{
+            // TODO: 要高速化
+            AKAFetchData *fetch = [[AKAFetchData alloc] init];
+            _articles = [NSArray arrayWithArray:[fetch fetchArticle]];
+        }
+            break;
+            
+        case 1:{
+            // TODO: 要高速化
+            AKAFetchData *fetch = [[AKAFetchData alloc] init];
+            _articles = [NSArray arrayWithArray:[fetch fetchSaveArticle]];
+        }
+            break;
+            
+        default:{
+            AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            _articles = [NSArray arrayWithArray:delegate.article[_categoryNumber - 2]];
+        }
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

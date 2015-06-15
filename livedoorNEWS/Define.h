@@ -12,3 +12,6 @@
 #define LINK           @"link"
 #define DESCRIPTION    @"description"
 #define DATE           @"pubDate"
+
+#define ALL     @"All Items"
+#define SAVE    @"Saved Items"
