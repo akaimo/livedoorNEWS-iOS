@@ -24,4 +24,17 @@
     }
 }
 
+//-- DBのsaved・unSavedを更新する
+- (void)changeSave:(NSString *)link save:(NSNumber *)save {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"link == %@",link];
+    NSArray *records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    
+    for (NSMutableData *data in records) {
+        [data setValue:save forKey:@"save"];
+        [[AKACoreData sharedCoreData] saveContext];
+        NSLog(@"DBへ反映(un)saved");
+    }
+}
+
 @end

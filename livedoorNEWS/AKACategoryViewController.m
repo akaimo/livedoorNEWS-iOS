@@ -57,6 +57,10 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [_categoryTableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -78,7 +82,11 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
     [df setDateFormat:@"yyyy/MM/dd HH:mm"];
-    cell.dateLabel.text = [df stringFromDate:[_articles valueForKey:@"date"][indexPath.row]];
+    if ([[_articles valueForKey:@"save"][indexPath.row] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        cell.dateLabel.text = [NSString stringWithFormat:@"★ %@", [df stringFromDate:[_articles valueForKey:@"date"][indexPath.row]]];
+    } else {
+        cell.dateLabel.text = [df stringFromDate:[_articles valueForKey:@"date"][indexPath.row]];
+    }
     cell.dateLabel.textColor = [UIColor darkGrayColor];
     
     [cell.titleLabel sizeToFit];

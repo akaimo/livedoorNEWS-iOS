@@ -11,5 +11,6 @@
 @interface AKAMarkAsArticle : NSObject
 
 - (void)changeUnread:(NSString *)link unread:(NSNumber *)unread;
+- (void)changeSave:(NSString *)link save:(NSNumber *)save;
 
 @end
