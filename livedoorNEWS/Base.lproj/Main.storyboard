@@ -102,7 +102,13 @@
                             <constraint firstAttribute="trailing" secondItem="Xbt-KX-bza" secondAttribute="trailing" id="sXd-zZ-YaV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Fx3-R8-2yA"/>
+                    <navigationItem key="navigationItem" id="Fx3-R8-2yA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="X3N-62-qhI">
+                            <connections>
+                                <action selector="tapActionBtn:" destination="QGf-at-rcO" id="Rfp-Ot-ylm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTableView" destination="Xbt-KX-bza" id="lhb-Ya-W4D"/>
                     </connections>

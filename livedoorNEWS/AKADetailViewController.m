@@ -130,7 +130,7 @@
 
 - (IBAction)tapActionBtn:(id)sender {
     UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil
-                                                                 message:nil
+                                                                 message:@"Change articles of state?"
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"

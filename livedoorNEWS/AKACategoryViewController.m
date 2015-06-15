@@ -17,6 +17,7 @@
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (strong, nonatomic) NSArray *articles;
+- (IBAction)tapActionBtn:(id)sender;
 
 @end
 
@@ -138,4 +139,35 @@
     }
 }
 
+- (void)markAllasRead {
+    // TODO: 要高速化
+    AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+    for (int i=0; i<_articles.count; i++) {
+        [mark changeUnread:[_articles valueForKey:@"link"][i] unread:[NSNumber numberWithBool:NO]];
+        [_articles[i] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)tapActionBtn:(id)sender {
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:@"Mark all items from this list as read?"
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                          }];
+    
+    UIAlertAction * destructiveAction = [UIAlertAction actionWithTitle:@"Mark All as Read"
+                                                                 style:UIAlertActionStyleDestructive
+                                                               handler:^(UIAlertAction * action) {
+                                                                   [self markAllasRead];
+                                                               }];
+    
+    [ac addAction:cancelAction];
+    [ac addAction:destructiveAction];
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
 @end
