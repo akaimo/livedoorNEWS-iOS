@@ -46,7 +46,13 @@
                             <constraint firstItem="pOS-VZ-yBB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mNu-jS-G1A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xEd-By-ylf"/>
+                    <navigationItem key="navigationItem" id="xEd-By-ylf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="BL1-ij-kxS">
+                            <connections>
+                                <action selector="tapRefresh:" destination="vXZ-lx-hvc" id="gaB-Ic-Tjj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="topTableView" destination="pOS-VZ-yBB" id="VfA-xo-XWs"/>
                     </connections>
