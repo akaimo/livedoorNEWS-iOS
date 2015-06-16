@@ -11,6 +11,7 @@
 #import "AKASynchro.h"
 #import "AKAFetchData.h"
 #import "Define.h"
+#include "JDStatusBarNotification.h"
 
 @interface AKATopViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -25,15 +26,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /* 次のViewの戻るボタンの設定 */
+    // 次のViewの戻るボタンの設定
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"";
     self.navigationItem.backBarButtonItem = barButton;
     
     self.title = @"livedoor NEWS";
-    [AKASynchro synchro];
-    _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     [AKAFetchData fetch];
+    
+    [JDStatusBarNotification showWithStatus:@"Syncing..." styleName:JDStatusBarStyleDark];
+    [JDStatusBarNotification showActivityIndicator:YES indicatorStyle:UIActivityIndicatorViewStyleWhite];
+    dispatch_queue_t queue = dispatch_queue_create("synchro.queue", NULL);
+    dispatch_async(queue, ^{
+        [AKASynchro synchro];
+        [AKAFetchData fetch];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [JDStatusBarNotification showWithStatus:@"Sync Success!" dismissAfter:1.5 styleName:JDStatusBarStyleSuccess];
+        });
+    });
+    
+    _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -114,11 +127,21 @@
     [AKAFetchData fetch];
     
     [refreshControl endRefreshing];
+    [JDStatusBarNotification showWithStatus:@"Sync Success!" dismissAfter:1.5 styleName:JDStatusBarStyleSuccess];
 }
 
 
 - (IBAction)tapRefresh:(id)sender {
-    [AKASynchro synchro];
-    [AKAFetchData fetch];
+    [JDStatusBarNotification showWithStatus:@"Syncing..." styleName:JDStatusBarStyleDark];
+    [JDStatusBarNotification showActivityIndicator:YES indicatorStyle:UIActivityIndicatorViewStyleWhite];
+    dispatch_queue_t queue = dispatch_queue_create("synchro.queue", NULL);
+    dispatch_async(queue, ^{
+        [AKASynchro synchro];
+        [AKAFetchData fetch];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [JDStatusBarNotification showWithStatus:@"Sync Success!" dismissAfter:1.5 styleName:JDStatusBarStyleSuccess];
+        });
+    });
 }
 @end

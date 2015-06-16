@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     NSURL *url = [NSURL URLWithString:_url];
     NSLog(@"%@", _url);
     [_rssWebView loadRequest:[NSURLRequest requestWithURL:url]];

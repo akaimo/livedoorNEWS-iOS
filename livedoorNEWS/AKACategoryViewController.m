@@ -13,6 +13,7 @@
 #import "AKATableViewCell.h"
 #import "AKAFetchData.h"
 #import "AKAMarkAsArticle.h"
+#import "MBProgressHUD.h"
 
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
@@ -25,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // 次のViewの戻るボタンの設定
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
@@ -37,16 +37,30 @@
     
     switch (_categoryNumber) {
         case 0:{
-            // TODO: 要高速化
-            AKAFetchData *fetch = [[AKAFetchData alloc] init];
-            _articles = [NSArray arrayWithArray:[fetch fetchArticle]];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            dispatch_queue_t queue = dispatch_queue_create("AllItems.queue", NULL);
+            dispatch_async(queue, ^{
+                AKAFetchData *fetch = [[AKAFetchData alloc] init];
+                _articles = [NSArray arrayWithArray:[fetch fetchArticle]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [_categoryTableView reloadData];
+                });
+            });
         }
             break;
             
         case 1:{
-            // TODO: 要高速化
-            AKAFetchData *fetch = [[AKAFetchData alloc] init];
-            _articles = [NSArray arrayWithArray:[fetch fetchSaveArticle]];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            dispatch_queue_t queue = dispatch_queue_create("saveItems.queue", NULL);
+            dispatch_async(queue, ^{
+                AKAFetchData *fetch = [[AKAFetchData alloc] init];
+                _articles = [NSArray arrayWithArray:[fetch fetchSaveArticle]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [_categoryTableView reloadData];
+                });
+            });
         }
             break;
             
@@ -121,11 +135,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 開いたときに既読にする
     if ([[_articles valueForKey:@"unread"][indexPath.row] isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        // TODO: 要高速化
-        AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
-        [mark changeUnread:[_articles valueForKey:@"link"][indexPath.row] unread:[NSNumber numberWithBool:NO]];
-        [_articles[indexPath.row] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
-        [_categoryTableView reloadData];
+        dispatch_queue_t queue = dispatch_queue_create("read.queue", NULL);
+        dispatch_async(queue, ^{
+            AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+            [mark changeUnread:[_articles valueForKey:@"link"][indexPath.row] unread:[NSNumber numberWithBool:NO]];
+            [_articles[indexPath.row] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_categoryTableView reloadData];
+            });
+        });
     }
     [self performSegueWithIdentifier:@"Detail" sender:indexPath];
 }
@@ -140,13 +159,20 @@
 }
 
 - (void)markAllasRead {
-    // TODO: 要高速化
-    AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
-    for (int i=0; i<_articles.count; i++) {
-        [mark changeUnread:[_articles valueForKey:@"link"][i] unread:[NSNumber numberWithBool:NO]];
-        [_articles[i] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
-    }
-    [self.navigationController popViewControllerAnimated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_queue_t queue = dispatch_queue_create("markAllasRead.queue", NULL);
+    dispatch_async(queue, ^{
+        AKAMarkAsArticle *mark = [[AKAMarkAsArticle alloc] init];
+        for (int i=0; i<_articles.count; i++) {
+            [mark changeUnread:[_articles valueForKey:@"link"][i] unread:[NSNumber numberWithBool:NO]];
+            [_articles[i] setValue:[NSNumber numberWithDouble:NO] forKey:@"unread"];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    });
 }
 
 - (IBAction)tapActionBtn:(id)sender {

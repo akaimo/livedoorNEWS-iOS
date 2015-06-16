@@ -13,13 +13,12 @@
 
 + (void)fetch {
     AKAFetchData *fetchData = [[AKAFetchData alloc] init];
-    // TODO: categoryを取得
     NSArray *categoryArray = [fetchData fetchCategory];
     NSArray *categoryName = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
+    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.article = [NSMutableArray array];
     
-    // TODO: categoryごとにarticleを取得
     for (int i=0; i<categoryArray.count; i++) {
         // カテゴリーを抽出
         NSManagedObjectContext *category;
@@ -81,6 +80,22 @@
     request.sortDescriptors = @[sortDescriptor];
     NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
     return  records;
+}
+
+- (int)getArticleCount {
+    int count = 0;
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    [request setIncludesSubentities:NO];
+    count = (int)[[AKACoreData sharedCoreData].managedObjectContext countForFetchRequest:request error:nil];
+    return count;
+}
+
+- (NSArray *)fetchRandomArticle {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    [request setFetchOffset:(arc4random() % [self getArticleCount])];
+    [request setFetchLimit:1];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return records;
 }
 
 @end

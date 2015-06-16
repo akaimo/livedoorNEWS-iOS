@@ -9,6 +9,7 @@
 #import "AKADetailViewController.h"
 #import "AKARssWebViewController.h"
 #import "AKAMarkAsArticle.h"
+#import "AKAFetchData.h"
 
 @interface AKADetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -20,6 +21,7 @@
 - (IBAction)tapActionBtn:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *relationNumber;
+@property (strong, nonatomic) NSMutableArray *relationArticle;
 
 @end
 
@@ -40,27 +42,43 @@
     
     [self setDateLabel];
     
-    NSError *err = nil;
-    self.detailLabel.attributedText = [[NSAttributedString alloc]
-                                       initWithData:[[_article valueForKey:@"detail"][_articleNumber] dataUsingEncoding:NSUTF8StringEncoding]
-                                       options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-                                                 NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)}
-                                       documentAttributes:nil error:&err];
-    if(err) NSLog(@"Unable to parse label text: %@", err);
-    self.detailLabel.font = [UIFont fontWithName:@"System" size:15];
-    self.detailLabel.userInteractionEnabled = YES;
-    self.detailLabel.tag = 101;
+    self.detailLabel.text = @"";
+    dispatch_queue_t queue = dispatch_queue_create("saveItems.queue", NULL);
+    dispatch_async(queue, ^{
+        NSAttributedString *attrStr;
+        NSError *err = nil;
+        attrStr = [[NSAttributedString alloc]
+                                initWithData:[[_article valueForKey:@"detail"][_articleNumber] dataUsingEncoding:NSUTF8StringEncoding]
+                                options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
+                                          NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)}
+                                documentAttributes:nil error:&err];
+        if(err) NSLog(@"Unable to parse label text: %@", err);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.detailLabel.attributedText = attrStr;
+            self.detailLabel.font = [UIFont fontWithName:@"System" size:15];
+            self.detailLabel.userInteractionEnabled = YES;
+            self.detailLabel.tag = 101;
+        });
+    });
     
     _relationNumber = [NSMutableArray arrayWithArray:[self getRelationNumber]];
-    self.relation1Label.text = [_article valueForKey:@"title"][[_relationNumber[0] intValue]];
+    if (_article.count > 3) {
+        self.relation1Label.text = [_article valueForKey:@"title"][[_relationNumber[0] intValue]];
+        self.relation2Label.text = [_article valueForKey:@"title"][[_relationNumber[1] intValue]];
+        self.relation3Label.text = [_article valueForKey:@"title"][[_relationNumber[2] intValue]];
+    } else {
+        self.relation1Label.text = [_relationArticle valueForKey:@"title"][[_relationNumber[0] intValue]];
+        self.relation2Label.text = [_relationArticle valueForKey:@"title"][[_relationNumber[1] intValue]];
+        self.relation3Label.text = [_relationArticle valueForKey:@"title"][[_relationNumber[2] intValue]];
+    }
+    
     self.relation1Label.userInteractionEnabled = YES;
     self.relation1Label.tag = 200;
     
-    self.relation2Label.text = [_article valueForKey:@"title"][[_relationNumber[1] intValue]];
     self.relation2Label.userInteractionEnabled = YES;
     self.relation2Label.tag = 201;
     
-    self.relation3Label.text = [_article valueForKey:@"title"][[_relationNumber[2] intValue]];
     self.relation3Label.userInteractionEnabled = YES;
     self.relation3Label.tag = 202;
 }
@@ -86,17 +104,29 @@
             break;
             
         case 200:
-            vc.url = [_article valueForKey:@"link"][[_relationNumber[0] intValue]];
+            if (_article.count > 3) {
+                vc.url = [_article valueForKey:@"link"][[_relationNumber[0] intValue]];
+            } else {
+                vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[0] intValue]];
+            }
             [self.navigationController pushViewController:vc animated:YES];
             break;
             
         case 201:
-            vc.url = [_article valueForKey:@"link"][[_relationNumber[1] intValue]];
+            if (_article.count > 3) {
+                vc.url = [_article valueForKey:@"link"][[_relationNumber[1] intValue]];
+            } else {
+                vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[1] intValue]];
+            }
             [self.navigationController pushViewController:vc animated:YES];
             break;
             
         case 202:
-            vc.url = [_article valueForKey:@"link"][[_relationNumber[2] intValue]];
+            if (_article.count > 3) {
+                vc.url = [_article valueForKey:@"link"][[_relationNumber[2] intValue]];
+            } else {
+                vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[2] intValue]];
+            }
             [self.navigationController pushViewController:vc animated:YES];
             break;
             
@@ -106,13 +136,20 @@
 }
 
 - (NSArray *)getRelationNumber {
-    // TODO: 同一の数や現在表示中とかぶったときの処理
-    // TODO: カテゴリー内の記事が3個未満のときの対応
     NSMutableArray *array = [NSMutableArray array];
-    for (int i=0; i<3; i++) {
-        int count = (int)_article.count;
-        int num = (int)arc4random_uniform(count);
-        [array addObject:[NSNumber numberWithInteger:num]];
+    if (_article.count > 3) {
+        for (int i=0; i<3; i++) {
+            int count = (int)_article.count;
+            int num = (int)arc4random_uniform(count);
+            [array addObject:[NSNumber numberWithInteger:num]];
+        }
+    } else {
+        AKAFetchData *fetch = [[AKAFetchData alloc] init];
+        _relationArticle = [NSMutableArray array];
+        for (int i=0; i<3; i++) {
+            [_relationArticle addObject:[fetch fetchRandomArticle][0]];
+            [array addObject:[NSNumber numberWithInt:i]];
+        }
     }
     return  array;
 }
