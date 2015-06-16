@@ -7,195 +7,289 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3129DA5D6112AC74BEED2B5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DCC71B410F182D561622A3 /* CoreGraphics.framework */; };
-		6215BEDE641236475381403B /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = FAB905EB227E9DFFAFE26854 /* MBProgressHUD.h */; };
-		684CAA8A25146ADA71F7557C /* Pods-MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 411900589F83E6032B968BB3 /* Pods-MBProgressHUD-dummy.m */; };
-		931A2F16B77CFE1A3CA7DB94 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D75DBE94E76911776B3CC1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D57B2B39FD1CBAA9149BDF09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6619B3832573E7BE67C5B84 /* Foundation.framework */; };
-		DB46AAE3BF5ACDACB013F56B /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B03E7DD916392EAB8ABC59ED /* Pods-dummy.m */; };
-		EF662FA4CE3F8668ED571395 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6619B3832573E7BE67C5B84 /* Foundation.framework */; };
+		0012773D1604AD129D0EB84F /* Pods-MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B04470576CC6D60278935A /* Pods-MBProgressHUD-dummy.m */; };
+		23EE85EB164EE30E2A6FBB16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1805751F92AE3923F1092088 /* CoreGraphics.framework */; };
+		39D9DC8704EBE3CFE248D198 /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A2189EA6774D570D12F379 /* JDStatusBarView.m */; };
+		3A2C44B32F8ED612F04476B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB67CE37686EBA595B3350D3 /* Foundation.framework */; };
+		4354ACE2B1EC0C40256ECAA2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE11DBF95F5298A471D7EC39 /* QuartzCore.framework */; };
+		5D63551CBE323509AF452D77 /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4D31F4D2B8A7A72BAF454B /* JDStatusBarNotification.m */; };
+		7FB56C30E52CECC6A869E2B5 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 479A73C2FAEE86695F47D4C5 /* MBProgressHUD.h */; };
+		835FAF6A912B915ACA13F0C4 /* Pods-JDStatusBarNotification-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B46431C2F783C01AC9250D02 /* Pods-JDStatusBarNotification-dummy.m */; };
+		841875A7AD461AFA431B11C4 /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 864F019B188C29C0D192AEF2 /* JDStatusBarStyle.m */; };
+		852BAB7E54CC758F075D9A7D /* JDStatusBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCE9AB48C4E467B2560CEB5 /* JDStatusBarView.h */; };
+		9E06A74CAF02E6B525E08D0E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 64281CDC589B681C3489AAD1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A2D32526BEDB4C875AFB05C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB67CE37686EBA595B3350D3 /* Foundation.framework */; };
+		A2F7A6E37A4BC78DF84C12D2 /* JDStatusBarStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D8BA91F7C570E1073066660E /* JDStatusBarStyle.h */; };
+		B27BB94199F7191C4F128594 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 953384BB613963A3FC7B43A4 /* Pods-dummy.m */; };
+		B7283CDA4744F1AC57F5339D /* JDStatusBarNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CE1110DC2743A5C4003FF68 /* JDStatusBarNotification.h */; };
+		BB8D766D01E4681D11A418BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB67CE37686EBA595B3350D3 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2672AEC400E288DB8CE6AD65 /* PBXContainerItemProxy */ = {
+		71B61D93188DB1A44C32FA3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7453813CA2DD2BE65A414432 /* Project object */;
+			containerPortal = FD9D5685B8481CC8D7D45A04 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F945A7EBA571B53157707A97;
+			remoteGlobalIDString = 682A6BC34C1A9CF18FCB23AE;
+			remoteInfo = "Pods-JDStatusBarNotification";
+		};
+		FA4932363CCCAC14D3145ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD9D5685B8481CC8D7D45A04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBFF4453ED28B7EFC5A08784;
 			remoteInfo = "Pods-MBProgressHUD";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E88F3B23EDD8FB650F859D0 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MBProgressHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		205D45AD6CBB860FF12CE3E2 /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
-		20B20DA087648C23B4DC65C1 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		30BED7E5A8E0C852D40D0131 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		30F2D17016A11FEDEBF91F7F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		36C3E00D207FB491D3E3C82A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		36DC9C61259739739349D532 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		372474D3B982DF71C5C2EF9D /* Pods-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
-		411900589F83E6032B968BB3 /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		41D75DBE94E76911776B3CC1 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		57DCC71B410F182D561622A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		5D0665F8F1A4493D54B604AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		66BF0489881FF85B1C3F1C29 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		8E01F9C3B6DA4775A2DDB0B4 /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		8E690EF9AB90F5C444684DB6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B03E7DD916392EAB8ABC59ED /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		D6619B3832573E7BE67C5B84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		FAB905EB227E9DFFAFE26854 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		050401FD882628DD7F0A874E /* Pods-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
+		063EFA551CDC3908F779C702 /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		0FCE9AB48C4E467B2560CEB5 /* JDStatusBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarView.h; path = JDStatusBarNotification/JDStatusBarView.h; sourceTree = "<group>"; };
+		13B04470576CC6D60278935A /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		1805751F92AE3923F1092088 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		34A2189EA6774D570D12F379 /* JDStatusBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarView.m; path = JDStatusBarNotification/JDStatusBarView.m; sourceTree = "<group>"; };
+		34A71A64B7CE21A578642200 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		38160B351A9B85B3566FF283 /* libPods-JDStatusBarNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JDStatusBarNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		385168CBFCBA53707E69ABC8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		479A73C2FAEE86695F47D4C5 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		479E1A73B1FF9763861BBA67 /* Pods-JDStatusBarNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JDStatusBarNotification-prefix.pch"; sourceTree = "<group>"; };
+		4DF1F27C8D6AB2C3C491D6EE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		5D1170FD535D072525CA2572 /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
+		64281CDC589B681C3489AAD1 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		66A013EAD03753F670885BA7 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MBProgressHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B49E294A3E395A9A724B970 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		7CE1110DC2743A5C4003FF68 /* JDStatusBarNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarNotification.h; path = JDStatusBarNotification/JDStatusBarNotification.h; sourceTree = "<group>"; };
+		7FD88353CC8344A99341B7BC /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		864F019B188C29C0D192AEF2 /* JDStatusBarStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarStyle.m; path = JDStatusBarNotification/JDStatusBarStyle.m; sourceTree = "<group>"; };
+		953384BB613963A3FC7B43A4 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		AD458BCC2385018BD596BFD9 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AE11DBF95F5298A471D7EC39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		B46431C2F783C01AC9250D02 /* Pods-JDStatusBarNotification-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JDStatusBarNotification-dummy.m"; sourceTree = "<group>"; };
+		B57D425E8AD9D55A9BA814E7 /* Pods-JDStatusBarNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JDStatusBarNotification.xcconfig"; sourceTree = "<group>"; };
+		B93A94C8ADEAF93F3E35E4DD /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		BB67CE37686EBA595B3350D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BD4D31F4D2B8A7A72BAF454B /* JDStatusBarNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JDStatusBarNotification.m; path = JDStatusBarNotification/JDStatusBarNotification.m; sourceTree = "<group>"; };
+		BDE9CD45299E9BB75CD9AB80 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BA91F7C570E1073066660E /* JDStatusBarStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JDStatusBarStyle.h; path = JDStatusBarNotification/JDStatusBarStyle.h; sourceTree = "<group>"; };
+		F91DC42527CB5F3135CA84B8 /* Pods-JDStatusBarNotification-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JDStatusBarNotification-Private.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3914B5A52BB0313DBD007BA1 /* Frameworks */ = {
+		11D9757632098C6314A83CBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF662FA4CE3F8668ED571395 /* Foundation.framework in Frameworks */,
+				3A2C44B32F8ED612F04476B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FCB7B0D511B1A95A28701BAA /* Frameworks */ = {
+		15B93BB1A5645B44FAEF1286 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3129DA5D6112AC74BEED2B5F /* CoreGraphics.framework in Frameworks */,
-				D57B2B39FD1CBAA9149BDF09 /* Foundation.framework in Frameworks */,
+				BB8D766D01E4681D11A418BA /* Foundation.framework in Frameworks */,
+				4354ACE2B1EC0C40256ECAA2 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A86502B8917E9380B9760F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23EE85EB164EE30E2A6FBB16 /* CoreGraphics.framework in Frameworks */,
+				A2D32526BEDB4C875AFB05C7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A108610675774AA5E445603 /* Pods */ = {
+		3B5065D4B38C704652890F7A /* JDStatusBarNotification */ = {
 			isa = PBXGroup;
 			children = (
-				30BED7E5A8E0C852D40D0131 /* Pods-acknowledgements.markdown */,
-				66BF0489881FF85B1C3F1C29 /* Pods-acknowledgements.plist */,
-				B03E7DD916392EAB8ABC59ED /* Pods-dummy.m */,
-				20B20DA087648C23B4DC65C1 /* Pods-environment.h */,
-				36DC9C61259739739349D532 /* Pods-resources.sh */,
-				36C3E00D207FB491D3E3C82A /* Pods.debug.xcconfig */,
-				5D0665F8F1A4493D54B604AB /* Pods.release.xcconfig */,
+				7CE1110DC2743A5C4003FF68 /* JDStatusBarNotification.h */,
+				BD4D31F4D2B8A7A72BAF454B /* JDStatusBarNotification.m */,
+				D8BA91F7C570E1073066660E /* JDStatusBarStyle.h */,
+				864F019B188C29C0D192AEF2 /* JDStatusBarStyle.m */,
+				0FCE9AB48C4E467B2560CEB5 /* JDStatusBarView.h */,
+				34A2189EA6774D570D12F379 /* JDStatusBarView.m */,
+				B6B91B8C0D8874D5BDC00C76 /* Support Files */,
 			);
-			name = Pods;
-			path = "Target Support Files/Pods";
+			path = JDStatusBarNotification;
 			sourceTree = "<group>";
 		};
-		4133700DD9CD87C605BF4301 /* MBProgressHUD */ = {
+		7642D62309999C4F25DE83BC /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				FAB905EB227E9DFFAFE26854 /* MBProgressHUD.h */,
-				41D75DBE94E76911776B3CC1 /* MBProgressHUD.m */,
-				E32A55167227856A843CB8A0 /* Support Files */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		89D22C3AB93B6661B2A82606 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1A108610675774AA5E445603 /* Pods */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		8AF3F77AAF4D1563B3B04B86 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				57DCC71B410F182D561622A3 /* CoreGraphics.framework */,
-				D6619B3832573E7BE67C5B84 /* Foundation.framework */,
+				1805751F92AE3923F1092088 /* CoreGraphics.framework */,
+				BB67CE37686EBA595B3350D3 /* Foundation.framework */,
+				AE11DBF95F5298A471D7EC39 /* QuartzCore.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		8C2E32D12B6073BE786C7CC6 /* Pods */ = {
+		7834D8AB3D439D4B762EE872 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4133700DD9CD87C605BF4301 /* MBProgressHUD */,
+				BDE9CD45299E9BB75CD9AB80 /* libPods.a */,
+				38160B351A9B85B3566FF283 /* libPods-JDStatusBarNotification.a */,
+				66A013EAD03753F670885BA7 /* libPods-MBProgressHUD.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A86E9BE327AB3EDEE5E3DB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B5065D4B38C704652890F7A /* JDStatusBarNotification */,
+				82EDFD5AD070013FD366B611 /* MBProgressHUD */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A2B1F1EBAF7D5E0109FA0FEC /* Frameworks */ = {
+		82EDFD5AD070013FD366B611 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				8AF3F77AAF4D1563B3B04B86 /* iOS */,
+				479A73C2FAEE86695F47D4C5 /* MBProgressHUD.h */,
+				64281CDC589B681C3489AAD1 /* MBProgressHUD.m */,
+				AE8E017A2B3360E5B3BE0A7B /* Support Files */,
 			);
-			name = Frameworks;
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
-		E32A55167227856A843CB8A0 /* Support Files */ = {
+		AAC2326034E799F2761955A2 = {
 			isa = PBXGroup;
 			children = (
-				372474D3B982DF71C5C2EF9D /* Pods-MBProgressHUD.xcconfig */,
-				205D45AD6CBB860FF12CE3E2 /* Pods-MBProgressHUD-Private.xcconfig */,
-				411900589F83E6032B968BB3 /* Pods-MBProgressHUD-dummy.m */,
-				8E01F9C3B6DA4775A2DDB0B4 /* Pods-MBProgressHUD-prefix.pch */,
+				34A71A64B7CE21A578642200 /* Podfile */,
+				B101FEC320E5CDDB1DD1E231 /* Frameworks */,
+				7A86E9BE327AB3EDEE5E3DB9 /* Pods */,
+				7834D8AB3D439D4B762EE872 /* Products */,
+				BD6C48E73EC57D12BFBA3A31 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AE8E017A2B3360E5B3BE0A7B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				050401FD882628DD7F0A874E /* Pods-MBProgressHUD.xcconfig */,
+				5D1170FD535D072525CA2572 /* Pods-MBProgressHUD-Private.xcconfig */,
+				13B04470576CC6D60278935A /* Pods-MBProgressHUD-dummy.m */,
+				063EFA551CDC3908F779C702 /* Pods-MBProgressHUD-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-MBProgressHUD";
 			sourceTree = "<group>";
 		};
-		E6595C8922C5CC5250B12093 /* Products */ = {
+		B101FEC320E5CDDB1DD1E231 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8E690EF9AB90F5C444684DB6 /* libPods.a */,
-				0E88F3B23EDD8FB650F859D0 /* libPods-MBProgressHUD.a */,
+				7642D62309999C4F25DE83BC /* iOS */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E8541C88019E2D02A375BE65 = {
+		B492E6E81B829D26894C1B28 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				30F2D17016A11FEDEBF91F7F /* Podfile */,
-				A2B1F1EBAF7D5E0109FA0FEC /* Frameworks */,
-				8C2E32D12B6073BE786C7CC6 /* Pods */,
-				E6595C8922C5CC5250B12093 /* Products */,
-				89D22C3AB93B6661B2A82606 /* Targets Support Files */,
+				AD458BCC2385018BD596BFD9 /* Pods-acknowledgements.markdown */,
+				7FD88353CC8344A99341B7BC /* Pods-acknowledgements.plist */,
+				953384BB613963A3FC7B43A4 /* Pods-dummy.m */,
+				6B49E294A3E395A9A724B970 /* Pods-environment.h */,
+				B93A94C8ADEAF93F3E35E4DD /* Pods-resources.sh */,
+				385168CBFCBA53707E69ABC8 /* Pods.debug.xcconfig */,
+				4DF1F27C8D6AB2C3C491D6EE /* Pods.release.xcconfig */,
 			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		B6B91B8C0D8874D5BDC00C76 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B57D425E8AD9D55A9BA814E7 /* Pods-JDStatusBarNotification.xcconfig */,
+				F91DC42527CB5F3135CA84B8 /* Pods-JDStatusBarNotification-Private.xcconfig */,
+				B46431C2F783C01AC9250D02 /* Pods-JDStatusBarNotification-dummy.m */,
+				479E1A73B1FF9763861BBA67 /* Pods-JDStatusBarNotification-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-JDStatusBarNotification";
+			sourceTree = "<group>";
+		};
+		BD6C48E73EC57D12BFBA3A31 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B492E6E81B829D26894C1B28 /* Pods */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		34757D92F52D67E4127EA471 /* Headers */ = {
+		3371065BACE30E530B85813C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6215BEDE641236475381403B /* MBProgressHUD.h in Headers */,
+				B7283CDA4744F1AC57F5339D /* JDStatusBarNotification.h in Headers */,
+				A2F7A6E37A4BC78DF84C12D2 /* JDStatusBarStyle.h in Headers */,
+				852BAB7E54CC758F075D9A7D /* JDStatusBarView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F26A1D21B2AB28110E5C3CB9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FB56C30E52CECC6A869E2B5 /* MBProgressHUD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A37A3C169932E270529070AE /* Pods */ = {
+		682A6BC34C1A9CF18FCB23AE /* Pods-JDStatusBarNotification */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACCF5820026DA900A8D5E751 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = 964ED7A647F672B3C8291685 /* Build configuration list for PBXNativeTarget "Pods-JDStatusBarNotification" */;
 			buildPhases = (
-				B9055F0CF351E4CD0916FA5D /* Sources */,
-				3914B5A52BB0313DBD007BA1 /* Frameworks */,
+				95E36977A01652E56FA579F6 /* Sources */,
+				15B93BB1A5645B44FAEF1286 /* Frameworks */,
+				3371065BACE30E530B85813C /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DE54FC61DA7EB68BF04D429E /* PBXTargetDependency */,
+			);
+			name = "Pods-JDStatusBarNotification";
+			productName = "Pods-JDStatusBarNotification";
+			productReference = 38160B351A9B85B3566FF283 /* libPods-JDStatusBarNotification.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		78A5CFD62FE56160400D6C1F /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31286BC60B969DC8E61C9C85 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				9BCDC49B898A2A66309AA1E8 /* Sources */,
+				11D9757632098C6314A83CBB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				817CD1CA0DF112DB4502B05E /* PBXTargetDependency */,
+				52E58E3C57D00418553ABB0F /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 8E690EF9AB90F5C444684DB6 /* libPods.a */;
+			productReference = BDE9CD45299E9BB75CD9AB80 /* libPods.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F945A7EBA571B53157707A97 /* Pods-MBProgressHUD */ = {
+		DBFF4453ED28B7EFC5A08784 /* Pods-MBProgressHUD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D6383F94288D1E7DF2AAEDC /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */;
+			buildConfigurationList = BB0F2F5DEC3FEA3BCD8CE1E4 /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */;
 			buildPhases = (
-				6D5DCB44E732FB86132A4BFA /* Sources */,
-				FCB7B0D511B1A95A28701BAA /* Frameworks */,
-				34757D92F52D67E4127EA471 /* Headers */,
+				C942F2C2F181AE6D54FE9707 /* Sources */,
+				3A86502B8917E9380B9760F1 /* Frameworks */,
+				F26A1D21B2AB28110E5C3CB9 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -203,100 +297,86 @@
 			);
 			name = "Pods-MBProgressHUD";
 			productName = "Pods-MBProgressHUD";
-			productReference = 0E88F3B23EDD8FB650F859D0 /* libPods-MBProgressHUD.a */;
+			productReference = 66A013EAD03753F670885BA7 /* libPods-MBProgressHUD.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7453813CA2DD2BE65A414432 /* Project object */ = {
+		FD9D5685B8481CC8D7D45A04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 6F825BC9C2C2EC3A8C2E640B /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4C283F3270B9AF03121A8549 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E8541C88019E2D02A375BE65;
-			productRefGroup = E6595C8922C5CC5250B12093 /* Products */;
+			mainGroup = AAC2326034E799F2761955A2;
+			productRefGroup = 7834D8AB3D439D4B762EE872 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A37A3C169932E270529070AE /* Pods */,
-				F945A7EBA571B53157707A97 /* Pods-MBProgressHUD */,
+				78A5CFD62FE56160400D6C1F /* Pods */,
+				682A6BC34C1A9CF18FCB23AE /* Pods-JDStatusBarNotification */,
+				DBFF4453ED28B7EFC5A08784 /* Pods-MBProgressHUD */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6D5DCB44E732FB86132A4BFA /* Sources */ = {
+		95E36977A01652E56FA579F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				931A2F16B77CFE1A3CA7DB94 /* MBProgressHUD.m in Sources */,
-				684CAA8A25146ADA71F7557C /* Pods-MBProgressHUD-dummy.m in Sources */,
+				5D63551CBE323509AF452D77 /* JDStatusBarNotification.m in Sources */,
+				841875A7AD461AFA431B11C4 /* JDStatusBarStyle.m in Sources */,
+				39D9DC8704EBE3CFE248D198 /* JDStatusBarView.m in Sources */,
+				835FAF6A912B915ACA13F0C4 /* Pods-JDStatusBarNotification-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9055F0CF351E4CD0916FA5D /* Sources */ = {
+		9BCDC49B898A2A66309AA1E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB46AAE3BF5ACDACB013F56B /* Pods-dummy.m in Sources */,
+				B27BB94199F7191C4F128594 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C942F2C2F181AE6D54FE9707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E06A74CAF02E6B525E08D0E /* MBProgressHUD.m in Sources */,
+				0012773D1604AD129D0EB84F /* Pods-MBProgressHUD-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DE54FC61DA7EB68BF04D429E /* PBXTargetDependency */ = {
+		52E58E3C57D00418553ABB0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-MBProgressHUD";
-			target = F945A7EBA571B53157707A97 /* Pods-MBProgressHUD */;
-			targetProxy = 2672AEC400E288DB8CE6AD65 /* PBXContainerItemProxy */;
+			target = DBFF4453ED28B7EFC5A08784 /* Pods-MBProgressHUD */;
+			targetProxy = FA4932363CCCAC14D3145ACB /* PBXContainerItemProxy */;
+		};
+		817CD1CA0DF112DB4502B05E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-JDStatusBarNotification";
+			target = 682A6BC34C1A9CF18FCB23AE /* Pods-JDStatusBarNotification */;
+			targetProxy = 71B61D93188DB1A44C32FA3D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1CBD89041244D98431EC55B2 /* Release */ = {
+		79401C951F7F24FCC28F64FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D0665F8F1A4493D54B604AB /* Pods.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		491E7CC4F922B9C063B035E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 205D45AD6CBB860FF12CE3E2 /* Pods-MBProgressHUD-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		9898BEDF0959D34614610E32 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36C3E00D207FB491D3E3C82A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 385168CBFCBA53707E69ABC8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -310,9 +390,9 @@
 			};
 			name = Debug;
 		};
-		B553FD0DC1F3DB826217DC7C /* Debug */ = {
+		7B52918EA54526EE737CC551 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 205D45AD6CBB860FF12CE3E2 /* Pods-MBProgressHUD-Private.xcconfig */;
+			baseConfigurationReference = 5D1170FD535D072525CA2572 /* Pods-MBProgressHUD-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
@@ -326,7 +406,55 @@
 			};
 			name = Debug;
 		};
-		D7217359155F06CDF05CD5A0 /* Release */ = {
+		8D422A6EF7DB6E6CB2C8876E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D1170FD535D072525CA2572 /* Pods-MBProgressHUD-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9E4C9D815C26256D02B1C1A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F91DC42527CB5F3135CA84B8 /* Pods-JDStatusBarNotification-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-JDStatusBarNotification/Pods-JDStatusBarNotification-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A1334C936BA54355995C1C95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F91DC42527CB5F3135CA84B8 /* Pods-JDStatusBarNotification-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-JDStatusBarNotification/Pods-JDStatusBarNotification-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A41C97CBDC1FD8E9CF369E05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -360,7 +488,23 @@
 			};
 			name = Release;
 		};
-		F410A6D61B7509B263D131AE /* Debug */ = {
+		CA87BA5579F747DD80FBC654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DF1F27C8D6AB2C3C491D6EE /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D1E89870FFDB380AD40C5653 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -402,34 +546,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D6383F94288D1E7DF2AAEDC /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */ = {
+		31286BC60B969DC8E61C9C85 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B553FD0DC1F3DB826217DC7C /* Debug */,
-				491E7CC4F922B9C063B035E3 /* Release */,
+				79401C951F7F24FCC28F64FE /* Debug */,
+				CA87BA5579F747DD80FBC654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F825BC9C2C2EC3A8C2E640B /* Build configuration list for PBXProject "Pods" */ = {
+		4C283F3270B9AF03121A8549 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F410A6D61B7509B263D131AE /* Debug */,
-				D7217359155F06CDF05CD5A0 /* Release */,
+				D1E89870FFDB380AD40C5653 /* Debug */,
+				A41C97CBDC1FD8E9CF369E05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACCF5820026DA900A8D5E751 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		964ED7A647F672B3C8291685 /* Build configuration list for PBXNativeTarget "Pods-JDStatusBarNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9898BEDF0959D34614610E32 /* Debug */,
-				1CBD89041244D98431EC55B2 /* Release */,
+				9E4C9D815C26256D02B1C1A8 /* Debug */,
+				A1334C936BA54355995C1C95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0F2F5DEC3FEA3BCD8CE1E4 /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B52918EA54526EE737CC551 /* Debug */,
+				8D422A6EF7DB6E6CB2C8876E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7453813CA2DD2BE65A414432 /* Project object */;
+	rootObject = FD9D5685B8481CC8D7D45A04 /* Project object */;
 }
