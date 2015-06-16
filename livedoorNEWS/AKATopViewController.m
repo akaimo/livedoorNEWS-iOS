@@ -25,15 +25,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /* 次のViewの戻るボタンの設定 */
+    // 次のViewの戻るボタンの設定
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
     barButton.title = @"";
     self.navigationItem.backBarButtonItem = barButton;
     
     self.title = @"livedoor NEWS";
-    [AKASynchro synchro];
-    _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     [AKAFetchData fetch];
+    
+    dispatch_queue_t queue = dispatch_queue_create("synchro.queue", NULL);
+    dispatch_async(queue, ^{
+        [AKASynchro synchro];
+        [AKAFetchData fetch];
+    });
+    
+    _articles = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -118,7 +124,10 @@
 
 
 - (IBAction)tapRefresh:(id)sender {
-    [AKASynchro synchro];
-    [AKAFetchData fetch];
+    dispatch_queue_t queue = dispatch_queue_create("synchro.queue", NULL);
+    dispatch_async(queue, ^{
+        [AKASynchro synchro];
+        [AKAFetchData fetch];
+    });
 }
 @end

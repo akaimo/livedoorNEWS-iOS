@@ -40,16 +40,25 @@
     
     [self setDateLabel];
     
-    NSError *err = nil;
-    self.detailLabel.attributedText = [[NSAttributedString alloc]
-                                       initWithData:[[_article valueForKey:@"detail"][_articleNumber] dataUsingEncoding:NSUTF8StringEncoding]
-                                       options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-                                                 NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)}
-                                       documentAttributes:nil error:&err];
-    if(err) NSLog(@"Unable to parse label text: %@", err);
-    self.detailLabel.font = [UIFont fontWithName:@"System" size:15];
-    self.detailLabel.userInteractionEnabled = YES;
-    self.detailLabel.tag = 101;
+    self.detailLabel.text = @"";
+    dispatch_queue_t queue = dispatch_queue_create("saveItems.queue", NULL);
+    dispatch_async(queue, ^{
+        NSAttributedString *attrStr;
+        NSError *err = nil;
+        attrStr = [[NSAttributedString alloc]
+                                initWithData:[[_article valueForKey:@"detail"][_articleNumber] dataUsingEncoding:NSUTF8StringEncoding]
+                                options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
+                                          NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)}
+                                documentAttributes:nil error:&err];
+        if(err) NSLog(@"Unable to parse label text: %@", err);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.detailLabel.attributedText = attrStr;
+            self.detailLabel.font = [UIFont fontWithName:@"System" size:15];
+            self.detailLabel.userInteractionEnabled = YES;
+            self.detailLabel.tag = 101;
+        });
+    });
     
     _relationNumber = [NSMutableArray arrayWithArray:[self getRelationNumber]];
     self.relation1Label.text = [_article valueForKey:@"title"][[_relationNumber[0] intValue]];
