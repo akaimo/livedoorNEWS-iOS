@@ -82,4 +82,20 @@
     return  records;
 }
 
+- (int)getArticleCount {
+    int count = 0;
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    [request setIncludesSubentities:NO];
+    count = (int)[[AKACoreData sharedCoreData].managedObjectContext countForFetchRequest:request error:nil];
+    return count;
+}
+
+- (NSArray *)fetchRandomArticle {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    [request setFetchOffset:(arc4random() % [self getArticleCount])];
+    [request setFetchLimit:1];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return records;
+}
+
 @end

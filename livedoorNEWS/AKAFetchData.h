@@ -17,5 +17,6 @@
 - (NSArray *)fetchArticle:(NSManagedObjectContext *)category;
 - (NSArray *)fetchArticle;
 - (NSArray *)fetchSaveArticle;
+- (NSArray *)fetchRandomArticle;
 
 @end
