@@ -107,4 +107,27 @@
     if (self.rssWebView.canGoBack) [self.rssWebView goBack];
 }
 
+- (void)actionBtnTap:(UIButton *)sender {
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:@"share"
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                          }];
+    
+    UIAlertAction * safariAction = [UIAlertAction actionWithTitle:@"Open in Safari"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              NSURL *url = [NSURL URLWithString:_url];
+                                                              [[UIApplication sharedApplication] openURL:url];
+                                                          }];
+    
+    [ac addAction:cancelAction];
+    [ac addAction:safariAction];
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
+
 @end
