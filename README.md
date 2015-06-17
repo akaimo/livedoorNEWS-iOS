@@ -11,6 +11,7 @@ iOS 8.3
 例）  
 
 ```
-% clone git@github.com:akaimo/livedoorNEWS-iOS.git
+% git clone git@github.com:akaimo/livedoorNEWS-iOS.git
+% cd livedoorNEWS-iOS
 % open open livedoorNEWS.xcworkspace/
 ```
