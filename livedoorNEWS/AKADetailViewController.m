@@ -63,10 +63,10 @@
     });
     
     _relationNumber = [NSMutableArray arrayWithArray:[self getRelationNumber]];
-    if (_article.count > 3) {
-        self.relation1Label.text = [_article valueForKey:@"title"][[_relationNumber[0] intValue]];
-        self.relation2Label.text = [_article valueForKey:@"title"][[_relationNumber[1] intValue]];
-        self.relation3Label.text = [_article valueForKey:@"title"][[_relationNumber[2] intValue]];
+    if (_rerationCategoryArticle.count > 3) {
+        self.relation1Label.text = [_rerationCategoryArticle valueForKey:@"title"][[_relationNumber[0] intValue]];
+        self.relation2Label.text = [_rerationCategoryArticle valueForKey:@"title"][[_relationNumber[1] intValue]];
+        self.relation3Label.text = [_rerationCategoryArticle valueForKey:@"title"][[_relationNumber[2] intValue]];
     } else {
         self.relation1Label.text = [_relationArticle valueForKey:@"title"][[_relationNumber[0] intValue]];
         self.relation2Label.text = [_relationArticle valueForKey:@"title"][[_relationNumber[1] intValue]];
@@ -104,8 +104,8 @@
             break;
             
         case 200:
-            if (_article.count > 3) {
-                vc.url = [_article valueForKey:@"link"][[_relationNumber[0] intValue]];
+            if (_rerationCategoryArticle.count > 3) {
+                vc.url = [_rerationCategoryArticle valueForKey:@"link"][[_relationNumber[0] intValue]];
             } else {
                 vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[0] intValue]];
             }
@@ -113,8 +113,8 @@
             break;
             
         case 201:
-            if (_article.count > 3) {
-                vc.url = [_article valueForKey:@"link"][[_relationNumber[1] intValue]];
+            if (_rerationCategoryArticle.count > 3) {
+                vc.url = [_rerationCategoryArticle valueForKey:@"link"][[_relationNumber[1] intValue]];
             } else {
                 vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[1] intValue]];
             }
@@ -122,8 +122,8 @@
             break;
             
         case 202:
-            if (_article.count > 3) {
-                vc.url = [_article valueForKey:@"link"][[_relationNumber[2] intValue]];
+            if (_rerationCategoryArticle.count > 3) {
+                vc.url = [_rerationCategoryArticle valueForKey:@"link"][[_relationNumber[2] intValue]];
             } else {
                 vc.url = [_relationArticle valueForKey:@"link"][[_relationNumber[2] intValue]];
             }
@@ -137,9 +137,9 @@
 
 - (NSArray *)getRelationNumber {
     NSMutableArray *array = [NSMutableArray array];
-    if (_article.count > 3) {
+    if (_rerationCategoryArticle.count > 3) {
         for (int i=0; i<3; i++) {
-            int count = (int)_article.count;
+            int count = (int)_rerationCategoryArticle.count;
             int num = (int)arc4random_uniform(count);
             [array addObject:[NSNumber numberWithInteger:num]];
         }

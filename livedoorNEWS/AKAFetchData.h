@@ -18,5 +18,8 @@
 - (NSArray *)fetchArticle;
 - (NSArray *)fetchSaveArticle;
 - (NSArray *)fetchRandomArticle;
+- (NSArray *)fetchSearchArticleWithCategory:(NSManagedObjectContext *)category title:(NSString *)title;
+- (NSArray *)fetchSearchAllArticle:(NSString *)title;
+- (NSArray *)fetchSearchSaveArticle:(NSString *)title;
 
 @end
