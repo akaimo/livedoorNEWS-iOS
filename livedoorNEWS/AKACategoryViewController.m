@@ -18,9 +18,12 @@
 @interface AKACategoryViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray *articles;
-@property (strong, nonatomic) NSMutableArray *searchResultsArticles;
+
 - (IBAction)tapActionBtn:(id)sender;
+
+@property (strong, nonatomic) NSArray *articles;                        // 該当カテゴリーの記事
+@property (strong, nonatomic) NSMutableArray *searchResultsArticles;    // 検索結果の記事
+@property (strong, nonatomic) NSNumber *noArticle;                      // 記事の存在を管理するフラグ
 
 @end
 
@@ -38,7 +41,7 @@
     [self.categoryTableView registerNib:nib forCellReuseIdentifier:@"Detail"];
     
     switch (_categoryNumber) {
-        case 0:{
+        case 0:{    // All Items
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             dispatch_queue_t queue = dispatch_queue_create("AllItems.queue", NULL);
             dispatch_async(queue, ^{
@@ -52,7 +55,7 @@
         }
             break;
             
-        case 1:{
+        case 1:{    // Save Items
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             dispatch_queue_t queue = dispatch_queue_create("saveItems.queue", NULL);
             dispatch_async(queue, ^{
@@ -72,6 +75,10 @@
         }
             break;
     }
+    
+    // 検索バーを隠す
+    [self.categoryTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                  atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,21 +93,48 @@
 
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger count;
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         // 検索したとき
-        return _searchResultsArticles.count;
+        count = _searchResultsArticles.count;
     } else {
-        return _articles.count;
+        count = _articles.count;
     }
+    
+    // 記事の存在確認
+    if (count == 0) {
+        _noArticle = [NSNumber numberWithBool:YES];
+        count++;
+    } else {
+        _noArticle = [NSNumber numberWithBool:NO];
+    }
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"Detail";
     AKATableViewCell *cell;
     
+    if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        // 記事が存在しないとき
+        UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:@"Detail"];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        cell.titleLabel.text = @"記事が存在しません";
+        cell.dateLabel.text = @"";
+        return cell;
+    }
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         // 検索したとき
+        tableView.separatorColor = [UIColor clearColor];    // 下線を消す
+        
         UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:@"Detail"];
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -151,6 +185,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        // 記事が存在しないとき
+        return 44.0;
+    }
+    
     CGFloat height;
     CGFloat dateHeight = 15.0;
     CGFloat pad = 10.0 + 10.0;
@@ -239,10 +278,25 @@
 }
 
 - (void)filterContainsWithSearchText:(NSString *)searchText {
-    // TODO: categoryNumberによって処理をわける
     _searchResultsArticles = [NSMutableArray array];
     AKAFetchData *fetch = [[AKAFetchData alloc] init];
-    _searchResultsArticles = [NSMutableArray arrayWithArray:[fetch fetchArticleWithCategory:[_articles valueForKey:@"category"][0] title:searchText]];
+    
+    // 記事が存在するときのみ検索する
+    if (_articles.count != 0) {
+        switch (_categoryNumber) {
+            case 0:     // All Items
+                _searchResultsArticles = [NSMutableArray arrayWithArray:[fetch fetchSearchAllArticle:searchText]];
+                break;
+                
+            case 1:     // Save Items
+                _searchResultsArticles = [NSMutableArray arrayWithArray:[fetch fetchSearchSaveArticle:searchText]];
+                break;
+                
+            default:
+                _searchResultsArticles = [NSMutableArray arrayWithArray:[fetch fetchSearchArticleWithCategory:[_articles valueForKey:@"category"][0] title:searchText]];
+                break;
+        }
+    }
 }
 
 - (BOOL)searchDisplayController:controller shouldReloadTableForSearchString:(NSString *)searchString {
