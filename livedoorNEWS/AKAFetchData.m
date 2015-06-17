@@ -98,4 +98,13 @@
     return records;
 }
 
+- (NSArray *)fetchArticleWithCategory:(NSManagedObjectContext *)category title:(NSString *)title {
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+    request.predicate = [NSPredicate predicateWithFormat:@"category == %@ && unread == %@ && title CONTAINS %@", category, [NSNumber numberWithBool:YES], title];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
+    NSArray* records = [[AKACoreData sharedCoreData].managedObjectContext executeFetchRequest:request error:nil];
+    return  records;
+}
+
 @end

@@ -11,6 +11,7 @@
 @interface AKADetailViewController : UIViewController
 
 @property (strong, nonatomic) NSArray *article;
+@property (strong, nonatomic) NSArray *rerationCategoryArticle;
 @property int articleNumber;
 
 @end
