@@ -13,5 +13,5 @@ iOS 8.3
 ```
 % git clone git@github.com:akaimo/livedoorNEWS-iOS.git
 % cd livedoorNEWS-iOS
-% open open livedoorNEWS.xcworkspace/
+% open livedoorNEWS.xcworkspace/
 ```
