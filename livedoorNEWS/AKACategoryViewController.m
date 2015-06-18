@@ -121,12 +121,15 @@
     NSString *cellIdentifier = @"Detail";
     AKATableViewCell *cell;
     
+    [self tableView:tableView numberOfRowsInSection:indexPath.section];
+    
     if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         // 記事が存在しないとき
         UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:@"Detail"];
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         cell.titleLabel.text = @"記事が存在しません";
+        cell.titleLabel.textColor = [UIColor blackColor];
         cell.dateLabel.text = @"";
         return cell;
     }
@@ -208,6 +211,11 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        // 記事が存在しないとき
+        return;
+    }
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         // 検索
         // 開いたときに既読にする
