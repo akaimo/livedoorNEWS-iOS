@@ -28,14 +28,25 @@
     // Do any additional setup after loading the view.
     
     NSURL *url = [NSURL URLWithString:_url];
-    NSLog(@"%@", _url);
     [_rssWebView loadRequest:[NSURLRequest requestWithURL:url]];
     
-    _actionBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionBtnTap:)];
-    _refreshBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshBtnTap:)];
-    _stopBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopBtnTap:)];
-    _forwardBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nextWebBtn"] style:UIBarButtonItemStylePlain target:self action:@selector(forwardBtnTap:)];
-    _backBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backWebBtn"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnTap:)];
+    _actionBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                               target:self
+                                                               action:@selector(actionBtnTap:)];
+    _refreshBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                target:self
+                                                                action:@selector(refreshBtnTap:)];
+    _stopBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                             target:self
+                                                             action:@selector(stopBtnTap:)];
+    _forwardBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nextWebBtn"]
+                                                   style:UIBarButtonItemStylePlain
+                                                  target:self
+                                                  action:@selector(forwardBtnTap:)];
+    _backBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backWebBtn"]
+                                                style:UIBarButtonItemStylePlain
+                                               target:self
+                                               action:@selector(backBtnTap:)];
     self.navigationItem.rightBarButtonItems = @[_actionBtn, _refreshBtn, _forwardBtn, _backBtn];
 }
 
