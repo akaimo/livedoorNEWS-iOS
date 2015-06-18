@@ -121,6 +121,8 @@
     NSString *cellIdentifier = @"Detail";
     AKATableViewCell *cell;
     
+    [self tableView:tableView numberOfRowsInSection:indexPath.section];
+    
     if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         // 記事が存在しないとき
         UINib *nib = [UINib nibWithNibName:@"AKATableViewCell" bundle:nil];
