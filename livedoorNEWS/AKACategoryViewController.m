@@ -129,6 +129,7 @@
         [tableView registerNib:nib forCellReuseIdentifier:@"Detail"];
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         cell.titleLabel.text = @"記事が存在しません";
+        cell.titleLabel.textColor = [UIColor blackColor];
         cell.dateLabel.text = @"";
         return cell;
     }
