@@ -208,6 +208,11 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_noArticle isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        // 記事が存在しないとき
+        return;
+    }
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         // 検索
         // 開いたときに既読にする
