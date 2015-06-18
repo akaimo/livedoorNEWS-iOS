@@ -23,11 +23,6 @@
 @implementation AKASynchro
 
 + (void)synchro {
-    // sqlite3のURLを収得
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = paths[0];
-    NSLog(@"sqlite3: %@", documentsPath);
-    
     AKASynchro *synchro = [[AKASynchro alloc] init];
     NSArray *categoryName = @[@"主要", @"国内", @"海外", @"IT 経済", @"芸能", @"スポーツ", @"映画", @"グルメ", @"女子", @"トレンド"];
     NSArray *categoryURL = @[@"http://news.livedoor.com/topics/rss/top.xml",
@@ -137,7 +132,6 @@
 
 //-- タグ以外のテキストを読み込んだ時
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-//        NSLog(@"%@", string);
     if (isTitle) {
         [title appendString:string];
     } else if (isLink) {
@@ -151,7 +145,6 @@
 
 //-- 解析終了時
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    NSLog(@"finish");
 }
 
 //-- エラー発生時
@@ -211,7 +204,6 @@
             [obj setValue:[dic valueForKey:@"date"] forKey:@"date"];
             [obj setValue:category forKey:@"category"];
             [[AKACoreData sharedCoreData] saveContext];
-            NSLog(@"%@", [dic valueForKey:@"title"]);
         }
     }
 }
@@ -229,13 +221,9 @@
     
     if (records.count != 0) {
         for (NSManagedObject *data in records) {
-            NSLog(@"%@ %@", [data valueForKey:@"date"], [data valueForKey:@"title"]);
             [[[AKACoreData sharedCoreData] managedObjectContext] deleteObject:data];
         }
         [[AKACoreData sharedCoreData] saveContext];
-        NSLog(@"削除");
-    } else {
-        NSLog(@"削除なし");
     }
 }
 
